@@ -36,12 +36,11 @@ namespace Task3
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
-            Console.WriteLine(JsonConvert.SerializeObject(dataTests, options));
-            Console.ReadKey();
-            //var reportString = JsonConvert.SerializeObject(dataTests, options);
-            //StreamWriter file = File.CreateText("report.json");
-            //file.WriteLine(reportString);
-            //file.Close();
+            
+            var reportString = JsonConvert.SerializeObject(dataTests, options);
+            StreamWriter file = File.CreateText("report.json");
+            file.WriteLine(reportString);
+            file.Close();
         }
         private static IEnumerable<myJson> GetAllReports(myJson jsonFile)
         {
