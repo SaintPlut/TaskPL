@@ -17,35 +17,24 @@ namespace Task4
             List<int> list = new List<int>(1);
             int mid = 0;
             int count = 0;
-            using(StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(path))
             {
-                while (sr.EndOfStream!=true)
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    list.Add(int.Parse(sr.ReadLine())); 
-                } 
-               
-            }
-            int[] arr=list.ToArray();
+                    list.Add(int.Parse(line));
+                }
 
-            for(int i = 0; i < arr.Length; i++)
-                mid+=arr[i];
-            mid = mid / arr.Length;
+            }
+            int[] arr = list.ToArray();
+
+            mid = (int)list.Average();
             //---------------------------
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                if(arr[i] < mid)
-                {
-                    count=count + (mid - arr[i]);  
-                }
-                if (arr[i]>mid)
-                {
-                    count = count + (arr[i]-mid);
-                }
-                
-                
+                count += Math.Abs(arr[i] - mid);
             }
             Console.WriteLine(count);
-            
         }
     }
 }

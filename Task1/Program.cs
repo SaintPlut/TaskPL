@@ -18,12 +18,14 @@ namespace Task1
                 arr[i] = i + 1;
             }
             int startArr = 0;
-            do
+            int count = 0;
+            while (count < n)
             {
                 Console.Write(arr[startArr]);
                 startArr = (startArr + m - 1) % n;
+                count++;
             }
-            while (startArr != 0);
+            Console.ReadKey();
 
         }
     }

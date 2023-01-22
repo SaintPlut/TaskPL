@@ -7,25 +7,25 @@ namespace Task2
     {
         public static int CheckPoint(int ox, int oy, int r, int px, int py)
         {
-            int? answer = null;
-            if ((ox - px) * (ox - px) + (oy - py) * (oy - py) < r * r)
+            int dx = px - ox;
+            int dy = py - oy;
+            int distSquared = dx * dx + dy * dy;
+            if (distSquared < r * r)
             {
-                answer = 1;
+                return 1;
             }
-            if ((ox - px) * (ox - px) + (oy - py) * (oy - py) > r * r)
+            else if (distSquared > r * r)
             {
-                answer = 2;
+                return 2;
             }
-            if ((ox - px) * (ox - px) + (oy - py) * (oy - py) == r * r)
+            else
             {
-                answer = 0;
+                return 0;
             }
-            return (int)answer;
         }
 
         static void Main(string[] args)
         {
-            //string path1 = "окр.txt";
             string path1 = args[1];
             float o;
             int r;
@@ -36,26 +36,19 @@ namespace Task2
             }
             int ox = (int)o;
             int oy = (int)((o - ox) * 10 + 0.5);
-            //----------------------------------------------
-            //string path2 = "точки.txt";
+
             string path2 = args[2];
-            float[] arr = new float[100];
             int px;
             int py;
             using (StreamReader sr = new StreamReader(path2))
             {
-
-                for (int i = 0; i < arr.Length; i++)
+                while (!sr.EndOfStream)
                 {
                     string line = sr.ReadLine();
-                    arr[i] = float.Parse(line);
-                    px = (int)arr[i];
-                    py = (int)((arr[i] - px) * 10 + 0.5);
+                    float point = float.Parse(line);
+                    px = (int)point;
+                    py = (int)((point - px) * 10 + 0.5);
                     Console.WriteLine(CheckPoint(ox, oy, r, px, py));
-                    if (sr.EndOfStream)
-                    {
-                        break;
-                    }
                 }
             }
         }
