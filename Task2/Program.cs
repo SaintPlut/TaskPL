@@ -26,7 +26,7 @@ namespace Task2
 
         static void Main(string[] args)
         {
-            string path1 = args[1];
+            string path1 = args[0];
             float o;
             int r;
             string[] text = File.ReadAllText(path1).Split('\n');
@@ -37,7 +37,7 @@ namespace Task2
             int ox = (int)o;
             int oy = (int)((o - ox) * 10 + 0.5);
 
-            string path2 = args[2];
+            string path2 = args[1];
             int px;
             int py;
             using (StreamReader sr = new StreamReader(path2))
@@ -51,6 +51,7 @@ namespace Task2
                     Console.WriteLine(CheckPoint(ox, oy, r, px, py));
                 }
             }
+            Console.ReadKey();
         }
     }
 }

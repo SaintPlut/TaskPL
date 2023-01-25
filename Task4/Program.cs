@@ -13,7 +13,7 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            string path = args[1];
+            string path = args[0];
             List<int> list = new List<int>(1);
             int mid = 0;
             int count = 0;
@@ -24,17 +24,17 @@ namespace Task4
                 {
                     list.Add(int.Parse(line));
                 }
-
             }
             int[] arr = list.ToArray();
 
             mid = (int)list.Average();
-            //---------------------------
+          
             for (int i = 0; i < arr.Length; i++)
             {
                 count += Math.Abs(arr[i] - mid);
             }
             Console.WriteLine(count);
+            Console.ReadKey();
         }
     }
 }

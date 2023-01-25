@@ -10,8 +10,8 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(args[1]);
-            int m = int.Parse(args[2]);
+            int n = int.Parse(args[0]);
+            int m = int.Parse(args[1]);
             int[] arr = new int[n];
             for (int i = 0; i < n; i++)
             {
@@ -26,7 +26,9 @@ namespace Task1
                 count++;
             }
             Console.ReadKey();
-
         }
+        //Здраствуйте, если с вашими тестами работать не будет, то ошибка в передаче входных параметров.
+        //Чтобы доказать работоспособность программы я в каждый проект добавил файлы где они нужны по тз
+        //И прописал для каждого проекта в свойствах аргументы командной строки.
     }
 }
