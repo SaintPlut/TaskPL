@@ -15,8 +15,6 @@ namespace Task4
         {
             string path = args[0];
             List<int> list = new List<int>(1);
-            int mid = 0;
-            int count = 0;
             using (StreamReader sr = new StreamReader(path))
             {
                 string line;
@@ -26,14 +24,9 @@ namespace Task4
                 }
             }
             int[] arr = list.ToArray();
-
-            mid = (int)list.Average();
-          
-            for (int i = 0; i < arr.Length; i++)
-            {
-                count += Math.Abs(arr[i] - mid);
-            }
-            Console.WriteLine(count);
+            var mid=arr.OrderBy(x=>x).Skip(arr.Length/2).First();
+            var result = arr.Select(x => Math.Abs(x - mid)).Sum();
+            Console.WriteLine(result);
             Console.ReadKey();
         }
     }

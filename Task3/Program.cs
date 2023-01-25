@@ -12,7 +12,7 @@ namespace Task3
         {
             var values = File.ReadAllText("values.json");
             var tests = File.ReadAllText("tests.json");
-
+          
             var dataTests = JsonConvert.DeserializeObject<myJson>(tests);
             var dataValues = JsonConvert.DeserializeObject<myJson>(values);
 
